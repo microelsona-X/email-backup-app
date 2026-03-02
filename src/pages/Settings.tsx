@@ -98,7 +98,7 @@ export const Settings: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: '32px 48px', maxWidth: 960, margin: '0 auto' }}>
+    <div style={{ padding: 'clamp(16px, 3vw, 32px) clamp(16px, 4vw, 48px)', maxWidth: 960, margin: '0 auto' }}>
       <div style={{ marginBottom: 24 }}>
         <Title level={2} style={{ margin: 0, fontSize: 28, fontWeight: 600, color: '#1d1d1f', letterSpacing: '-0.5px' }}>
           {t('settings.title')}

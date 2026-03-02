@@ -50,7 +50,7 @@ const App: React.FC = () => {
   ]
 
   return (
-    <Layout style={{ minHeight: '100vh', background: '#f5f5f7' }}>
+    <Layout style={{ minHeight: '100vh', height: '100vh', background: '#f5f5f7', overflow: 'hidden' }}>
       <Sider
         width={220}
         style={{
@@ -69,7 +69,7 @@ const App: React.FC = () => {
             gap: 12
           }}
         >
-          <img src="/logo.svg" alt="MailGuardian" style={{ width: 32, height: 32 }} />
+          <img src="./logo.svg" alt="MailGuardian" style={{ width: 32, height: 32, objectFit: 'contain' }} />
           <div>
             <Title
               level={4}
@@ -150,7 +150,7 @@ const App: React.FC = () => {
       </Sider>
 
       <Layout>
-        <Content style={{ background: '#f5f5f7', minHeight: '100vh' }}>
+        <Content style={{ background: '#f5f5f7', height: '100vh', overflow: 'auto' }}>
           {menuItems.find((item) => item.key === activeTab)?.component}
         </Content>
       </Layout>

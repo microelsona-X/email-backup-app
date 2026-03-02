@@ -41,7 +41,7 @@ export const Dashboard: React.FC = () => {
       : t('dashboard.neverSynced')
 
   return (
-    <div style={{ padding: '32px 48px', maxWidth: 1400, margin: '0 auto' }}>
+    <div style={{ padding: 'clamp(16px, 3vw, 32px) clamp(16px, 4vw, 48px)', maxWidth: 1400, margin: '0 auto' }}>
       <div style={{ marginBottom: 32 }}>
         <Title level={2} style={{ margin: 0, fontSize: 28, fontWeight: 600, color: '#1d1d1f', letterSpacing: '-0.5px' }}>
           {t('dashboard.title')}
@@ -50,7 +50,7 @@ export const Dashboard: React.FC = () => {
       </div>
 
       <Row gutter={[24, 24]} style={{ marginBottom: 32 }}>
-        <Col span={8}>
+        <Col xs={24} sm={12} lg={8}>
           <Card
             style={{
               borderRadius: 16,
@@ -65,12 +65,12 @@ export const Dashboard: React.FC = () => {
               title={<span style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: 13, fontWeight: 500 }}>{t('dashboard.totalAccounts')}</span>}
               value={accounts.length}
               prefix={<MailOutlined style={{ fontSize: 20 }} />}
-              valueStyle={{ color: '#ffffff', fontSize: 40, fontWeight: 600 }}
+              valueStyle={{ color: '#ffffff', fontSize: 40, fontWeight: 600, lineHeight: '48px' }}
             />
           </Card>
         </Col>
 
-        <Col span={8}>
+        <Col xs={24} sm={12} lg={8}>
           <Card
             style={{
               borderRadius: 16,
@@ -85,12 +85,12 @@ export const Dashboard: React.FC = () => {
               title={<span style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: 13, fontWeight: 500 }}>{t('dashboard.activeAccounts')}</span>}
               value={activeAccounts}
               prefix={<CheckCircleOutlined style={{ fontSize: 20 }} />}
-              valueStyle={{ color: '#ffffff', fontSize: 40, fontWeight: 600 }}
+              valueStyle={{ color: '#ffffff', fontSize: 40, fontWeight: 600, lineHeight: '48px' }}
             />
           </Card>
         </Col>
 
-        <Col span={8}>
+        <Col xs={24} sm={24} lg={8}>
           <Card
             style={{
               borderRadius: 16,
@@ -105,7 +105,7 @@ export const Dashboard: React.FC = () => {
               title={<span style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: 13, fontWeight: 500 }}>{t('dashboard.lastSync')}</span>}
               value={lastSyncText}
               prefix={<ClockCircleOutlined style={{ fontSize: 20 }} />}
-              valueStyle={{ color: '#ffffff', fontSize: 20, fontWeight: 600 }}
+              valueStyle={{ color: '#ffffff', fontSize: 20, fontWeight: 600, lineHeight: '48px' }}
             />
           </Card>
         </Col>

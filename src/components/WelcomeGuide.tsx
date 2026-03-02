@@ -45,12 +45,21 @@ export const WelcomeGuide: React.FC<WelcomeGuideProps> = ({ open, onClose }) => 
           {t('guide.start')}
         </Button>
       ]}
-      width={700}
+      width="min(920px, 94vw)"
       centered
+      styles={{
+        body: {
+          maxHeight: '78vh',
+          overflowY: 'auto',
+          padding: '16px 20px'
+        }
+      }}
     >
-      <Space direction="vertical" size="large" style={{ width: '100%', padding: '20px 0' }}>
+      <Space direction="vertical" size="large" style={{ width: '100%', padding: '8px 0' }}>
         <div style={{ textAlign: 'center' }}>
-          <Title level={2} style={{ marginBottom: 8 }}>{t('guide.title')}</Title>
+          <Title level={2} style={{ marginBottom: 8, fontSize: 'clamp(28px, 3.2vw, 40px)' }}>
+            {t('guide.title')}
+          </Title>
           <Paragraph type="secondary" style={{ fontSize: 16 }}>{t('guide.subtitle')}</Paragraph>
         </div>
 

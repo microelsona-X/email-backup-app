@@ -2,8 +2,6 @@
 import { AccountService } from '../services/AccountService'
 import { ImapService } from '../services/ImapService'
 import { StorageService } from '../services/StorageService'
-import { GraphService } from '../services/GraphService'
-import { GmailService } from '../services/GmailService'
 import { SettingsService } from '../services/SettingsService'
 import type { AccountCreateInput } from '../../src/types/account'
 import type { SyncProgress } from '../../src/types/sync'
@@ -11,8 +9,6 @@ import type { AppSettings } from '../../src/types/settings'
 
 const accountService = new AccountService()
 const storageService = new StorageService()
-const graphService = new GraphService()
-const gmailService = new GmailService()
 const settingsService = new SettingsService()
 
 let autoSyncTimer: NodeJS.Timeout | null = null
@@ -182,45 +178,13 @@ export const registerIpcHandlers = (mainWindow: BrowserWindow) => {
     return result.filePaths[0]
   })
 
-  // OAuth authorization
-  ipcMain.handle('oauth-start-microsoft', async (_event, accountId: string) => {
-    try {
-      await graphService.authorize(accountId)
-      const userInfo = await graphService.getUserInfo(accountId)
-
-      mainWindow.webContents.send('oauth-success', {
-        accountId,
-        type: 'microsoft365',
-        email: userInfo.mail || userInfo.userPrincipalName,
-        displayName: userInfo.displayName
-      })
-
-      return { success: true, email: userInfo.mail || userInfo.userPrincipalName }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-      mainWindow.webContents.send('oauth-error', { accountId, error: errorMessage })
-      throw error
-    }
+  // OAuth is intentionally disabled for now.
+  ipcMain.handle('oauth-start-microsoft', async () => {
+    throw new Error('OAuth login is temporarily disabled')
   })
 
-  ipcMain.handle('oauth-start-gmail', async (_event, accountId: string) => {
-    try {
-      await gmailService.authorize(accountId)
-      const userInfo = await gmailService.getUserInfo(accountId)
-
-      mainWindow.webContents.send('oauth-success', {
-        accountId,
-        type: 'gmail',
-        email: userInfo.emailAddress,
-        displayName: userInfo.emailAddress
-      })
-
-      return { success: true, email: userInfo.emailAddress }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-      mainWindow.webContents.send('oauth-error', { accountId, error: errorMessage })
-      throw error
-    }
+  ipcMain.handle('oauth-start-gmail', async () => {
+    throw new Error('OAuth login is temporarily disabled')
   })
 
   applyAutoSyncSchedule(settingsService.getSettings())

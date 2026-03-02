@@ -159,7 +159,7 @@ export const Emails: React.FC = () => {
   )
 
   return (
-    <div style={{ padding: 24, height: '100vh', overflow: 'auto', background: '#f5f5f7' }}>
+    <div style={{ padding: 'clamp(12px, 2vw, 24px)', minHeight: '100%', overflow: 'auto', background: '#f5f5f7' }}>
       <Card
         style={{
           borderRadius: 16,
@@ -174,11 +174,11 @@ export const Emails: React.FC = () => {
         </div>
 
         <Space direction="vertical" size="large" style={{ width: '100%' }}>
-          <div style={{ display: 'flex', gap: 16 }}>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             <Select
               value={selectedAccount}
               onChange={setSelectedAccount}
-              style={{ width: 300 }}
+              style={{ width: 300, maxWidth: '100%' }}
               size="large"
               placeholder={t('emails.selectAccount')}
             >
@@ -196,7 +196,7 @@ export const Emails: React.FC = () => {
               onSearch={handleSearch}
               enterButton={<SearchOutlined />}
               size="large"
-              style={{ flex: 1 }}
+              style={{ flex: 1, minWidth: 240 }}
             />
 
             <Button

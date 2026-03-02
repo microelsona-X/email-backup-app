@@ -6,9 +6,66 @@
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
+    "generate:icons": "node scripts-generate-icons.cjs",
     "build": "tsc && vite build && electron-builder",
     "preview": "vite preview",
     "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.mailguardian.app",
+    "productName": "MailGuardian",
+    "files": [
+      {
+        "from": "dist",
+        "to": "dist",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "dist-electron",
+        "to": "dist-electron",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "build",
+        "to": "build",
+        "filter": [
+          "**/*"
+        ]
+      },
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico"
+    }
   },
   "keywords": [
     "email",
@@ -48,6 +105,8 @@
     "@vitejs/plugin-react": "^4.2.1",
     "electron": "^30.0.0",
     "electron-builder": "^24.9.1",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
     "vite-plugin-electron": "^0.28.0",
