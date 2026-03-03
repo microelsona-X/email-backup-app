@@ -1,6 +1,6 @@
 {
   "name": "mailguardian",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MailGuardian - 邮件守护者：安全可靠的跨平台邮件备份工具",
   "productName": "MailGuardian",
   "main": "dist-electron/main.js",
